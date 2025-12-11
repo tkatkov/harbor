@@ -68,6 +68,7 @@ $$
                 none_count := 0;
                 low_count := 0;
                 unknown_count := 0;
+                fixable_count := 0;
                 FOR v IN SELECT vr.severity, vr.fixed_version
                          FROM report_vulnerability_record rvr,
                               vulnerability_record vr
@@ -95,7 +96,8 @@ $$
                     high_cnt     = high_count,
                     medium_cnt   = medium_count,
                     low_cnt      = low_count,
-                    unknown_cnt  = unknown_count
+                    unknown_cnt  = unknown_count,
+                    fixable_cnt  = fixable_count
                 WHERE uuid = report.uuid;
             END LOOP;
     END
